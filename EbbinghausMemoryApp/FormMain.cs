@@ -33,7 +33,7 @@ namespace EbbinghausMemoryApp
         public FormMain()
         {
             InitializeComponent();
-#if Realse
+#if Release
             toolStripButton3.Visible = false;
 #endif
             this.WindowState = FormWindowState.Maximized;
