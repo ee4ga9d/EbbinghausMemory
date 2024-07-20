@@ -12,4 +12,5 @@
 * 采用.NET 4.8 WinForm，引用了EF 6+SQLite+log4net组件。为了使用WIN10系统的提醒功能，引入了UWP组件。
 * VS2017开发
 
+![image](https://github.com/user-attachments/assets/60f0bd15-76bb-42ac-859b-89b4ce42b0d6)
 
