@@ -42,7 +42,7 @@ namespace EbbinghausMemoryApp
 #if !Release
             CONST_TIMER_GAP = 10 * 60 * 1000;
 #endif
-            reviewTimer = new System.Timers.Timer(CONST_TIMER_GAP); 
+            reviewTimer = new System.Timers.Timer(CONST_TIMER_GAP);
             reviewTimer.Elapsed += ReviewTimer_Elapsed;
             reviewTimer.Start();
 
@@ -270,7 +270,7 @@ namespace EbbinghausMemoryApp
         {
             NotifyTask();
             ////test
-            //HelperClass h = new HelperClass();
+            HelperClass h = new HelperClass();
 
             //h.AddLesson4Test(1, "L1-6", System.DateTime.Parse("2024-07-02"));
             //h.AddLesson4Test(1, "L7-14", System.DateTime.Parse("2024-07-03"));
@@ -285,6 +285,10 @@ namespace EbbinghausMemoryApp
             //h.AddLesson4Test(1, "L39", System.DateTime.Parse("2024-07-13"));
             //h.AddLesson4Test(1, "L40", System.DateTime.Parse("2024-07-14"));
             //h.AddLesson4Test(1, "L41", System.DateTime.Parse("2024-07-15"));
+
+            h.DeleteAllStudy4Test();
+            PopulateTreeView();
+            RefreshCalendar(this.calendar.CurrentMonth);
         }
 
         private void mi_delBook_Click(object sender, EventArgs e)
@@ -447,6 +451,19 @@ namespace EbbinghausMemoryApp
         {
             string url = "https://github.com/ee4ga9d";
             OpenUrl(url);
+        }
+
+        private void mm_StudyPlan_Click(object sender, EventArgs e)
+        {
+            using (HelperClass h = new HelperClass())
+            {
+                bool b = h.LessonPlan();
+                if (b)
+                {
+                    RefreshCalendar(DateTime.Today);
+                    this.PopulateTreeView();
+                }
+            }
         }
     }
 }

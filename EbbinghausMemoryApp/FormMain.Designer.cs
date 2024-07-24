@@ -66,10 +66,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.clbTodoList = new System.Windows.Forms.CheckedListBox();
-            this.splitter2 = new System.Windows.Forms.Splitter();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.tbExp = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
+            this.tbExp = new System.Windows.Forms.TextBox();
+            this.splitter2 = new System.Windows.Forms.Splitter();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -86,10 +86,10 @@
             this.treeView.HideSelection = false;
             this.treeView.ImageIndex = 0;
             this.treeView.ImageList = this.imageList1;
-            this.treeView.Location = new System.Drawing.Point(0, 64);
+            this.treeView.Location = new System.Drawing.Point(0, 63);
             this.treeView.Name = "treeView";
             this.treeView.SelectedImageIndex = 0;
-            this.treeView.Size = new System.Drawing.Size(211, 548);
+            this.treeView.Size = new System.Drawing.Size(211, 549);
             this.treeView.TabIndex = 1;
             this.treeView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseDown);
             // 
@@ -105,59 +105,59 @@
             this.toolStripMenuItem3,
             this.mi_Modify});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 170);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(127, 148);
             // 
             // mi_AddBook
             // 
             this.mi_AddBook.Image = global::EbbinghausMemoryApp.Properties.Resources.培训学习;
             this.mi_AddBook.Name = "mi_AddBook";
-            this.mi_AddBook.Size = new System.Drawing.Size(124, 22);
+            this.mi_AddBook.Size = new System.Drawing.Size(126, 22);
             this.mi_AddBook.Text = "增加教材";
             this.mi_AddBook.Click += new System.EventHandler(this.mi_AddBook_Click);
             // 
             // mi_ClearAllLesson
             // 
             this.mi_ClearAllLesson.Name = "mi_ClearAllLesson";
-            this.mi_ClearAllLesson.Size = new System.Drawing.Size(180, 22);
+            this.mi_ClearAllLesson.Size = new System.Drawing.Size(126, 22);
             this.mi_ClearAllLesson.Text = "清空课程";
             this.mi_ClearAllLesson.Click += new System.EventHandler(this.mi_ClearAllLesson_Click);
             // 
             // mi_delBook
             // 
             this.mi_delBook.Name = "mi_delBook";
-            this.mi_delBook.Size = new System.Drawing.Size(124, 22);
+            this.mi_delBook.Size = new System.Drawing.Size(126, 22);
             this.mi_delBook.Text = "删除教材";
             this.mi_delBook.Click += new System.EventHandler(this.mi_delBook_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(121, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(123, 6);
             // 
             // mi_AddLesson
             // 
             this.mi_AddLesson.Image = global::EbbinghausMemoryApp.Properties.Resources.增加;
             this.mi_AddLesson.Name = "mi_AddLesson";
-            this.mi_AddLesson.Size = new System.Drawing.Size(124, 22);
+            this.mi_AddLesson.Size = new System.Drawing.Size(126, 22);
             this.mi_AddLesson.Text = "学习课程";
             this.mi_AddLesson.Click += new System.EventHandler(this.mi_AddLesson_Click);
             // 
             // mi_delLesson
             // 
             this.mi_delLesson.Name = "mi_delLesson";
-            this.mi_delLesson.Size = new System.Drawing.Size(124, 22);
+            this.mi_delLesson.Size = new System.Drawing.Size(126, 22);
             this.mi_delLesson.Text = "删除课程";
             this.mi_delLesson.Click += new System.EventHandler(this.mi_delLesson_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(121, 6);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(123, 6);
             // 
             // mi_Modify
             // 
             this.mi_Modify.Name = "mi_Modify";
-            this.mi_Modify.Size = new System.Drawing.Size(124, 22);
+            this.mi_Modify.Size = new System.Drawing.Size(126, 22);
             this.mi_Modify.Text = "修改";
             // 
             // imageList1
@@ -171,9 +171,9 @@
             // 
             // splitter1
             // 
-            this.splitter1.Location = new System.Drawing.Point(211, 64);
+            this.splitter1.Location = new System.Drawing.Point(211, 63);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(5, 548);
+            this.splitter1.Size = new System.Drawing.Size(5, 549);
             this.splitter1.TabIndex = 5;
             this.splitter1.TabStop = false;
             // 
@@ -192,12 +192,12 @@
             this.ppm_AddLesson,
             this.ppm_ExitApp});
             this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(125, 70);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(127, 70);
             // 
             // ppm_TodayTask
             // 
             this.ppm_TodayTask.Name = "ppm_TodayTask";
-            this.ppm_TodayTask.Size = new System.Drawing.Size(124, 22);
+            this.ppm_TodayTask.Size = new System.Drawing.Size(126, 22);
             this.ppm_TodayTask.Text = "今日复习";
             this.ppm_TodayTask.Click += new System.EventHandler(this.mm_Review_Click);
             // 
@@ -205,14 +205,14 @@
             // 
             this.ppm_AddLesson.Image = global::EbbinghausMemoryApp.Properties.Resources.增加;
             this.ppm_AddLesson.Name = "ppm_AddLesson";
-            this.ppm_AddLesson.Size = new System.Drawing.Size(124, 22);
+            this.ppm_AddLesson.Size = new System.Drawing.Size(126, 22);
             this.ppm_AddLesson.Text = "学习课程";
             this.ppm_AddLesson.Click += new System.EventHandler(this.mi_AddLesson_Click);
             // 
             // ppm_ExitApp
             // 
             this.ppm_ExitApp.Name = "ppm_ExitApp";
-            this.ppm_ExitApp.Size = new System.Drawing.Size(124, 22);
+            this.ppm_ExitApp.Size = new System.Drawing.Size(126, 22);
             this.ppm_ExitApp.Text = "退出";
             this.ppm_ExitApp.Click += new System.EventHandler(this.mm_Exit_Click);
             // 
@@ -224,7 +224,7 @@
             this.tsm_Help});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1017, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1017, 24);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -236,7 +236,7 @@
             this.toolStripMenuItem6,
             this.mm_Exit});
             this.tsm_Task.Name = "tsm_Task";
-            this.tsm_Task.Size = new System.Drawing.Size(44, 21);
+            this.tsm_Task.Size = new System.Drawing.Size(45, 20);
             this.tsm_Task.Text = "任务";
             // 
             // mmi_Study
@@ -272,21 +272,22 @@
             this.mm_StudyPlan,
             this.mm_StudyFinish});
             this.tsm_Tool.Name = "tsm_Tool";
-            this.tsm_Tool.Size = new System.Drawing.Size(44, 21);
+            this.tsm_Tool.Size = new System.Drawing.Size(45, 20);
             this.tsm_Tool.Text = "工具";
-            this.tsm_Tool.Visible = false;
             // 
             // mm_StudyPlan
             // 
             this.mm_StudyPlan.Name = "mm_StudyPlan";
             this.mm_StudyPlan.Size = new System.Drawing.Size(180, 22);
             this.mm_StudyPlan.Text = "学习规划";
+            this.mm_StudyPlan.Click += new System.EventHandler(this.mm_StudyPlan_Click);
             // 
             // mm_StudyFinish
             // 
             this.mm_StudyFinish.Name = "mm_StudyFinish";
             this.mm_StudyFinish.Size = new System.Drawing.Size(180, 22);
             this.mm_StudyFinish.Text = "完成率";
+            this.mm_StudyFinish.Visible = false;
             // 
             // tsm_Help
             // 
@@ -294,20 +295,20 @@
             this.mm_Help,
             this.mm_Feedback});
             this.tsm_Help.Name = "tsm_Help";
-            this.tsm_Help.Size = new System.Drawing.Size(44, 21);
+            this.tsm_Help.Size = new System.Drawing.Size(45, 20);
             this.tsm_Help.Text = "帮助";
             // 
             // mm_Help
             // 
             this.mm_Help.Name = "mm_Help";
-            this.mm_Help.Size = new System.Drawing.Size(180, 22);
+            this.mm_Help.Size = new System.Drawing.Size(100, 22);
             this.mm_Help.Text = "帮助";
             this.mm_Help.Click += new System.EventHandler(this.mm_Help_Click);
             // 
             // mm_Feedback
             // 
             this.mm_Feedback.Name = "mm_Feedback";
-            this.mm_Feedback.Size = new System.Drawing.Size(180, 22);
+            this.mm_Feedback.Size = new System.Drawing.Size(100, 22);
             this.mm_Feedback.Text = "反馈";
             this.mm_Feedback.Click += new System.EventHandler(this.mm_Feedback_Click);
             // 
@@ -318,7 +319,7 @@
             this.tsp_AddBook,
             this.tsp_addLesson,
             this.toolStripButton3});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 25);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1017, 39);
             this.toolStrip1.Stretch = true;
@@ -360,9 +361,9 @@
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(216, 64);
+            this.panel1.Location = new System.Drawing.Point(216, 63);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(582, 548);
+            this.panel1.Size = new System.Drawing.Size(582, 549);
             this.panel1.TabIndex = 11;
             // 
             // groupBox1
@@ -370,9 +371,9 @@
             this.groupBox1.Controls.Add(this.clbTodoList);
             this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupBox1.Location = new System.Drawing.Point(803, 64);
+            this.groupBox1.Location = new System.Drawing.Point(803, 63);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(214, 548);
+            this.groupBox1.Size = new System.Drawing.Size(214, 549);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "今日复习";
@@ -387,17 +388,8 @@
             "123123"});
             this.clbTodoList.Location = new System.Drawing.Point(3, 162);
             this.clbTodoList.Name = "clbTodoList";
-            this.clbTodoList.Size = new System.Drawing.Size(208, 383);
+            this.clbTodoList.Size = new System.Drawing.Size(208, 384);
             this.clbTodoList.TabIndex = 0;
-            // 
-            // splitter2
-            // 
-            this.splitter2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.splitter2.Location = new System.Drawing.Point(798, 64);
-            this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(5, 548);
-            this.splitter2.TabIndex = 14;
-            this.splitter2.TabStop = false;
             // 
             // panel2
             // 
@@ -408,14 +400,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(208, 145);
             this.panel2.TabIndex = 1;
-            // 
-            // tbExp
-            // 
-            this.tbExp.Location = new System.Drawing.Point(3, 3);
-            this.tbExp.Multiline = true;
-            this.tbExp.Name = "tbExp";
-            this.tbExp.Size = new System.Drawing.Size(202, 110);
-            this.tbExp.TabIndex = 0;
             // 
             // btnSave
             // 
@@ -428,6 +412,23 @@
             this.btnSave.Text = "保存";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // tbExp
+            // 
+            this.tbExp.Location = new System.Drawing.Point(3, 3);
+            this.tbExp.Multiline = true;
+            this.tbExp.Name = "tbExp";
+            this.tbExp.Size = new System.Drawing.Size(202, 110);
+            this.tbExp.TabIndex = 0;
+            // 
+            // splitter2
+            // 
+            this.splitter2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.splitter2.Location = new System.Drawing.Point(798, 63);
+            this.splitter2.Name = "splitter2";
+            this.splitter2.Size = new System.Drawing.Size(5, 549);
+            this.splitter2.TabIndex = 14;
+            this.splitter2.TabStop = false;
             // 
             // FormMain
             // 

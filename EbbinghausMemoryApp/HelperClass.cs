@@ -2,6 +2,8 @@
  * 作者:      ee4ga9d@gmail.com
  * 日期:      2024-07-18
  * 描述:      UI和数据库模型的辅助类。
+ *           2024.7.24 增加课程类规划。
+ *           bugfix:today->dateQuery  at func QueryMouthTask
  * 版本:      1.0
  * 版权:      x.com/0EE4GA9d © 2024
  ******************************************************************************/
@@ -126,7 +128,7 @@ namespace EbbinghausMemoryApp
                     db.ReviewTimes.RemoveRange(studyItem.ReviewTimes);
                     db.StudyItems.Remove(studyItem);
                     db.SaveChanges();
-                    
+
                     LoggingService.Info("Lesson deleted successfully.");
                 }
                 else
@@ -183,6 +185,16 @@ namespace EbbinghausMemoryApp
                 db.SaveChanges();
             }
         }
+
+        public void DeleteAllStudy4Test()
+        {
+            using (var db = new AppDbContext())
+            {
+                db.Database.ExecuteSqlCommand("DELETE FROM [ReviewTimes]");
+                db.Database.ExecuteSqlCommand("DELETE FROM [StudyItems]");
+                db.SaveChanges();
+            }
+        }
         private ICollection<ReviewTime> GenerateReviewTimes(DateTime startTime, int studyId)
         {
             var intervals = new TimeSpan[]
@@ -230,7 +242,8 @@ namespace EbbinghausMemoryApp
 
             using (var db = new AppDbContext())
             {
-                DateTime currentM = DateTime.Today.AddDays(-DateTime.Today.Day + 1);
+                //bugfix:today->dateQuery  2024.7.24
+                DateTime currentM = dateQuery.AddDays(-dateQuery.Day + 1);
                 DateTime nextM = currentM.AddMonths(1);
 
                 var reviewTimes = db.Database.SqlQuery<ToDoItem>($@"Select a.Id,a.[ReviewDateTime],a.[Reviewed] as IsCompleted,b.[Content] as Description,a.Experience From  ReviewTimes a ,studyitems b 
@@ -291,6 +304,58 @@ namespace EbbinghausMemoryApp
                 return true;
             }
             return false;
+        }
+
+        public bool LessonPlan()
+        {
+            using (var db = new AppDbContext())
+            {
+                List<string> books = db.BookItems.Select(m => m.Content).ToList();
+
+                FormPlan f = new FormPlan(books);
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+
+                    string bookName = f.BookName;
+                    int LessonDay = f.LessonDay;
+                    int LessonTotal = f.LessonTotal;
+                    int LessonBegin = f.LessonBegin;
+                    DateTime BeginDate = f.BeginDate;
+
+                    BookItem bi = db.BookItems.Where(m => m.Content == bookName).FirstOrDefault();
+                    int maxId = (int)db.StudyItems.Max(m => m.Id).GetValueOrDefault();
+                    int cId = maxId;
+                    int gap = (LessonTotal - LessonBegin + 1) / LessonDay + 1;
+
+                    for (int i = 0; i <= gap; i++)
+                    {
+                        string cName = $"L{LessonBegin + i* LessonDay}-L{LessonBegin + (i+1) * LessonDay}";
+                        if (LessonBegin + (i + 1) * LessonDay > LessonTotal)
+                            cName = $"L{LessonBegin + i * LessonDay}-L{LessonTotal}";
+                        if (LessonTotal == LessonBegin + i * LessonDay)
+                            cName = $"L{LessonTotal}";
+
+                        if (LessonBegin + i * LessonDay > LessonTotal)
+                            break;
+
+                        DateTime date = BeginDate.AddDays(i);
+
+                        cId++;
+                        StudyItem c = new StudyItem()
+                        {
+                            Id = cId,
+                            Content = cName,
+                            BookItem = bi,
+                            ReviewTimes = GenerateReviewTimes(date, cId)
+                        };
+                        db.StudyItems.Add(c);
+                    }
+                    db.SaveChanges();
+                    LoggingService.Info($"AddLesson batch from id={LessonBegin}");
+                    return true;
+                }
+                return false;
+            }
         }
         public static bool FinishTask(List<ViewTodayTask> list)
         {

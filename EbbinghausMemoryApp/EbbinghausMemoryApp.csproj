@@ -28,6 +28,7 @@
     <DocumentationFile>
     </DocumentationFile>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>

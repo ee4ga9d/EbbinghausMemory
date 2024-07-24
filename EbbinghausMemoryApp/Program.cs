@@ -8,21 +8,41 @@
 using System;
 using System.Configuration;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.IO;
 using System.Management;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace EbbinghausMemoryApp
 {
     static class Program
     {
+        [DllImport("user32.dll")]
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+        private const int SW_RESTORE = 9;
+
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
         [STAThread]
         static void Main()
         {
+            //只允许允许一个实例
+            Process currentProcess = Process.GetCurrentProcess();
+            Process[] runningProcesses = Process.GetProcessesByName(currentProcess.ProcessName);
+
+            if (runningProcesses.Length > 1)
+            {
+                
+                return;
+            }
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -55,6 +75,7 @@ namespace EbbinghausMemoryApp
             Application.Run(new FormMain());
         }
 
+    
         private static void InitializeDatabase(string dbFilePath)
         {
             string connectionString = $"Data Source={dbFilePath};Version=3;";
