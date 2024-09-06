@@ -2,7 +2,9 @@
  * 作者:      ee4ga9d@gmail.com
  * 日期:      2024-07-18
  * 描述:      主窗体。可增删书籍、课程，提醒每日应复习的课程。
- * 版本:      1.0
+ * v1.0.2.2 增加按下Delete键可删除树节点的课程
+ *
+ * 版本:      1.0.2.2
  * 版权:      x.com/0EE4GA9d © 2024
  ******************************************************************************/
 using System;
@@ -463,6 +465,14 @@ namespace EbbinghausMemoryApp
                     RefreshCalendar(DateTime.Today);
                     this.PopulateTreeView();
                 }
+            }
+        }
+
+        private void treeView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                mi_delLesson_Click(sender, null);
             }
         }
     }

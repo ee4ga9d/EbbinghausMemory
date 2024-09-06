@@ -91,6 +91,7 @@
             this.treeView.SelectedImageIndex = 0;
             this.treeView.Size = new System.Drawing.Size(211, 549);
             this.treeView.TabIndex = 1;
+            this.treeView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeView_KeyDown);
             this.treeView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeView_MouseDown);
             // 
             // contextMenuStrip1
@@ -243,26 +244,26 @@
             // 
             this.mmi_Study.Image = global::EbbinghausMemoryApp.Properties.Resources.增加;
             this.mmi_Study.Name = "mmi_Study";
-            this.mmi_Study.Size = new System.Drawing.Size(180, 22);
+            this.mmi_Study.Size = new System.Drawing.Size(100, 22);
             this.mmi_Study.Text = "学习";
             this.mmi_Study.Click += new System.EventHandler(this.mi_AddLesson_Click);
             // 
             // mm_Review
             // 
             this.mm_Review.Name = "mm_Review";
-            this.mm_Review.Size = new System.Drawing.Size(180, 22);
+            this.mm_Review.Size = new System.Drawing.Size(100, 22);
             this.mm_Review.Text = "复习";
             this.mm_Review.Click += new System.EventHandler(this.mm_Review_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(97, 6);
             // 
             // mm_Exit
             // 
             this.mm_Exit.Name = "mm_Exit";
-            this.mm_Exit.Size = new System.Drawing.Size(180, 22);
+            this.mm_Exit.Size = new System.Drawing.Size(100, 22);
             this.mm_Exit.Text = "退出";
             this.mm_Exit.Click += new System.EventHandler(this.mm_Exit_Click);
             // 
@@ -278,14 +279,14 @@
             // mm_StudyPlan
             // 
             this.mm_StudyPlan.Name = "mm_StudyPlan";
-            this.mm_StudyPlan.Size = new System.Drawing.Size(180, 22);
+            this.mm_StudyPlan.Size = new System.Drawing.Size(126, 22);
             this.mm_StudyPlan.Text = "学习规划";
             this.mm_StudyPlan.Click += new System.EventHandler(this.mm_StudyPlan_Click);
             // 
             // mm_StudyFinish
             // 
             this.mm_StudyFinish.Name = "mm_StudyFinish";
-            this.mm_StudyFinish.Size = new System.Drawing.Size(180, 22);
+            this.mm_StudyFinish.Size = new System.Drawing.Size(126, 22);
             this.mm_StudyFinish.Text = "完成率";
             this.mm_StudyFinish.Visible = false;
             // 
