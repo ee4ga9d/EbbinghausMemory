@@ -4,6 +4,7 @@
  * 描述:      UI和数据库模型的辅助类。
  *           2024.7.24 增加课程类规划。
  *           bugfix:today->dateQuery  at func QueryMouthTask
+ *           2024.11.21 增加显示课程名称 v1.0.2.4
  * 版本:      1.0
  * 版权:      x.com/0EE4GA9d © 2024
  ******************************************************************************/
@@ -245,11 +246,12 @@ namespace EbbinghausMemoryApp
                 //bugfix:today->dateQuery  2024.7.24
                 DateTime currentM = dateQuery.AddDays(-dateQuery.Day + 1);
                 DateTime nextM = currentM.AddMonths(1);
-
-                var reviewTimes = db.Database.SqlQuery<ToDoItem>($@"Select a.Id,a.[ReviewDateTime],a.[Reviewed] as IsCompleted,b.[Content] as Description,a.Experience From  ReviewTimes a ,studyitems b 
+                //bugfix:dispaly the lesson title
+                string sql = $@"Select a.Id,a.[ReviewDateTime],a.[Reviewed] as IsCompleted,b.[Content]|| '/' ||c.[Content] as Description,a.Experience From  ReviewTimes a ,studyitems b,BookItems c 
                 where reviewdatetime>='{currentM.ToString("yyyy-MM-dd")}' and   reviewdatetime< '{nextM.ToString("yyyy-MM-dd")}'
                 and 
-                a.studyitemid=b.id").ToList();
+                a.studyitemid=b.id  and b.BookId=c.id";
+                var reviewTimes = db.Database.SqlQuery<ToDoItem>(sql).ToList();
 
                 foreach (var rt in reviewTimes)
                 {
@@ -275,7 +277,16 @@ namespace EbbinghausMemoryApp
                 m.Reviewed == false).Count() == 0;
             }
         }
-
+        public string QueryTaskNameByDate(DateTime date)
+        {
+            using (var db = new AppDbContext())
+            {
+                var todayStr = date.ToString("yyyy-MM-dd");
+                var list = db.ReviewTimes.Where(m => m.ReviewDateTime.Substring(0, 10) == todayStr &&
+                 m.Reviewed == false).ToList();
+                return string.Join(",", list.Select(m => m.StudyItem.Content).ToList());
+            }
+        }
         public bool SaveReviewState(int reviewId, bool state, string desc)
         {
             using (var db = new AppDbContext())
@@ -329,7 +340,7 @@ namespace EbbinghausMemoryApp
 
                     for (int i = 0; i <= gap; i++)
                     {
-                        string cName = $"L{LessonBegin + i* LessonDay}-L{LessonBegin + (i+1) * LessonDay}";
+                        string cName = $"L{LessonBegin + i * LessonDay}-L{LessonBegin + (i + 1) * LessonDay}";
                         if (LessonBegin + (i + 1) * LessonDay > LessonTotal)
                             cName = $"L{LessonBegin + i * LessonDay}-L{LessonTotal}";
                         if (LessonTotal == LessonBegin + i * LessonDay)

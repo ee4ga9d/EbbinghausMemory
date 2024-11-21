@@ -3,7 +3,7 @@
  * 日期:      2024-07-18
  * 描述:      主窗体。可增删书籍、课程，提醒每日应复习的课程。
  * v1.0.2.2 增加按下Delete键可删除树节点的课程
- *
+ * v1.0.2.3 增加提示的时候有课程名称
  * 版本:      1.0.2.2
  * 版权:      x.com/0EE4GA9d © 2024
  ******************************************************************************/
@@ -16,6 +16,7 @@ namespace EbbinghausMemoryApp
     using EbbinghausMemoryApp.Controls;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Linq;
 
     public partial class FormMain : Form
     {
@@ -126,16 +127,20 @@ namespace EbbinghausMemoryApp
         {
             using (HelperClass h = new HelperClass())
             {
-                bool b = h.QueryTaskCountByDate(DateTime.Today);
-                if (!b)
+                bool b = this.calendar.ToDoItems.ContainsKey(DateTime.Today);
+                if (b)
                 {
                     try
                     {
+                        List<ToDoItem> list = calendar.ToDoItems[DateTime.Today];
+                        string msgText = "";
+                        if (list != null && list.Count > 0)
+                            msgText = string.Join(",\r", list.Select(m => m.Description).ToArray());
                         var contentBuilder = new Microsoft.Toolkit.Uwp.Notifications.ToastContentBuilder()
                             .AddArgument("action", "viewConversation")
                             .AddArgument("conversationId", 9813)
                             .AddText(this.Text)
-                            .AddText("今天尚有复习任务未完成");
+                            .AddText($"今天尚有复习任务【{msgText}】未完成");
                         contentBuilder.Show();
                     }
                     catch (Exception ex)
